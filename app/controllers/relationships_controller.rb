@@ -9,12 +9,12 @@ class RelationshipsController < ApplicationController
     redirect_to request.referer
   end
 
-  def followings
+  def follow
     user = User.find(params[:user_id])
     @users = user.followings
   end
 
-  def followers
+  def follower
     user = User.find(params[:user_id])
     @users = user.followers
   end
