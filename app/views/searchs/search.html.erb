@@ -1,0 +1,41 @@
+<h2>Books search for <%= @word %></h2>
+<% if @range == "User" %>
+ <table class="table">
+    <thead>
+      <tr>
+        <th></th>
+        <th>Name</th>
+        <th>Introduction</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @users.each do |users| %>
+      <tr>
+        <td><%= attachment_image_tag users, :profile_image, :fill, 30, 30, format: 'jpeg', fallback: 'no_image.jpg' %></td>
+        <td><%= users.name %></td>
+        <td><%= users.introduction %></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <table class="table">
+    <thead>
+      <tr>
+        <th></th>
+        <th>Title</th>
+        <th>Opinion</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @books.each do |books| %>
+      <tr>
+        <td><%= attachment_image_tag books.user, :profile_image, :fill, 30, 30, format: 'jpeg', fallback: 'no_image.jpg' %></td>
+        <td><%= books.title %></td>
+        <td><%= books.body %></td>
+      </tr>
+      <% end %>
+    </tbody>
+ </table>
+<% end %>
+  

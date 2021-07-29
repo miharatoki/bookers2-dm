@@ -29,6 +29,14 @@ class User < ApplicationRecord
     followings.include?(user)
   end
 
+  def self.looks(searchs, words)
+    if searchs == "perfect_match"
+      @user = User.where("name LIKE ?", "#{words}")
+    else
+      @user = User.where("name LIKE ?", "%#{words}%")
+    end
+  end
+
   attachment :profile_image, destroy: false
 
   validates :name, length: {maximum: 20, minimum: 2}, uniqueness: true
