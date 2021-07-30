@@ -22,4 +22,11 @@
       </div>
     </div>
   </nav>
+  <div class="row">
+    <div class="col-md-3 mx-auto">
+      <% if user_signed_in? %>
+        <%= render 'searchs/search' %>
+      <% end %>
+    </div>
+  </div>
 </header>
