@@ -1,0 +1,25 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-4 pull-left">
+      <div class="message">
+        <% @chats.each do |chat| %>
+          <% if chat.user.id == current_user.id %>
+            <p class="text-right"><%= chat.message %></p>
+          <% else %>
+            <p class="text-lef"><%= chat.message %></p>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  
+  <div class="row">
+    <div class="col-md-4">
+      <%= form_with model: @chat do |f| %>
+        <%= f.text_area :message %>
+        <%= f.hidden_field :room_id %>
+        <%= f.submit "送信" %>
+      <% end %>
+    </div>
+  </div>
+</div>
